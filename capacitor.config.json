@@ -1,6 +1,5 @@
 {
   "appId": "com.pockettrack.expensetracker",
   "appName": "PocketTrack",
-  "webDir": ".",
-  "bundledWebRuntime": false
+  "webDir": "www"
 }
