@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#6c63ff">
+  <title>PocketTrack - Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">YOUR MONEY, IN CONTROL</p>
+        <h1>Pocket<span>Track</span></h1>
+      </div>
+      <div class="avatar"><i class="fa-solid fa-wallet"></i></div>
+    </header>
+
+    <main>
+      <section class="balance-card">
+        <div class="balance-top">
+          <span>Total expenses this month</span>
+          <span class="month-pill" id="monthLabel"></span>
+        </div>
+        <div class="total" id="monthTotal">₹0.00</div>
+        <div class="balance-bottom">
+          <div><span class="dot income-dot"></span><small>Income</small><strong id="incomeTotal">₹0</strong></div>
+          <div><span class="dot expense-dot"></span><small>Expenses</small><strong id="expenseTotal">₹0</strong></div>
+        </div>
+        <div class="card-glow"></div>
+      </section>
+
+      <section class="quick-actions">
+        <button class="action-btn active" id="openExpense"><span><i class="fa-solid fa-arrow-up"></i></span>Add expense</button>
+        <button class="action-btn" id="openIncome"><span><i class="fa-solid fa-arrow-down"></i></span>Add income</button>
+      </section>
+
+      <section class="section-heading">
+        <div><p class="eyebrow">OVERVIEW</p><h2>Spending summary</h2></div>
+        <span class="period-label">This month</span>
+      </section>
+      <section class="summary-grid">
+        <article class="summary-card">
+          <div class="summary-icon purple"><i class="fa-solid fa-receipt"></i></div>
+          <p>Total transactions</p><strong id="transactionCount">0</strong>
+        </article>
+        <article class="summary-card">
+          <div class="summary-icon orange"><i class="fa-solid fa-chart-pie"></i></div>
+          <p>Top category</p><strong class="category-value" id="topCategory">—</strong>
+        </article>
+      </section>
+
+      <section class="section-heading transactions-heading">
+        <div><p class="eyebrow">YOUR ACTIVITY</p><h2>Recent transactions</h2></div>
+        <button class="text-button" id="clearAll">Clear all</button>
+      </section>
+      <div class="transaction-list" id="transactionList">
+        <div class="empty-state"><div><i class="fa-solid fa-mug-hot"></i></div><h3>No transactions yet</h3><p>Add your first expense or income to get started.</p></div>
+      </div>
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="nav-item selected"><i class="fa-solid fa-house"></i><span>Home</span></button>
+      <button class="nav-item" id="navAdd"><i class="fa-solid fa-circle-plus"></i><span>Add</span></button>
+      <button class="nav-item" id="navActivity"><i class="fa-solid fa-clock-rotate-left"></i><span>Activity</span></button>
+    </nav>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop">
+    <form class="entry-modal" id="entryForm">
+      <div class="modal-head"><div><p class="eyebrow">NEW TRANSACTION</p><h2 id="formTitle">Add expense</h2></div><button type="button" class="close-btn" id="closeModal"><i class="fa-solid fa-xmark"></i></button></div>
+      <div class="type-switch"><button type="button" class="type-option chosen" data-type="expense">Expense</button><button type="button" class="type-option" data-type="income">Income</button></div>
+      <label>Amount (₹)<input type="number" id="amount" min="0.01" step="0.01" placeholder="e.g. 450" required></label>
+      <label>Title<input type="text" id="title" maxlength="50" placeholder="e.g. Grocery shopping" required></label>
+      <label>Category
+        <select id="category" required>
+          <option value="Food">Food</option><option value="Travel">Travel</option><option value="Shopping">Shopping</option>
+          <option value="Bills">Bills</option><option value="Health">Health</option><option value="Education">Education</option>
+          <option value="Salary">Salary</option><option value="Other">Other</option>
+        </select>
+      </label>
+      <label>Date<input type="date" id="date" required></label>
+      <button class="submit-btn" type="submit">Save transaction <i class="fa-solid fa-arrow-right"></i></button>
+    </form>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
